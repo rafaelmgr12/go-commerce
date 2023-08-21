@@ -82,8 +82,8 @@ usecase.ProcessOrder(order, r1)
 
 ## **Contributing**
 
-Contributions are welcome! Please read the **[CONTRIBUTING.md](https://chat.openai.com/CONTRIBUTING.md)** for details on how to contribute.
+Contributions are welcome! Please read the **[CONTRIBUTING.md]()** for details on how to contribute.
 
 ## **License**
 
-This project is licensed under the MIT License. See the **[LICENSE.md](https://chat.openai.com/LICENSE.md)** file for details.
+This project is licensed under the MIT License. See the **[LICENSE.md]()** file for details.
