@@ -7,3 +7,10 @@ type Product struct {
 	Category string
 	Value    int
 }
+
+func NewProduct(category string, value int) (*Product, error) {
+	return &Product{
+		ID:       uuid.New(),
+		Category: category,
+		Value:    value}, nil
+}
