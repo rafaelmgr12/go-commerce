@@ -23,7 +23,6 @@ The **`go-commerce`** system is designed to process online orders by applying a 
 1. **Clone the Repository**:
     
     ```bash
-    bashCopy code
     git clone https://github.com/rafaelmgr12/go-commerce.git
     
     ```
@@ -31,7 +30,6 @@ The **`go-commerce`** system is designed to process online orders by applying a 
 2. **Navigate to the Directory**:
     
     ```bash
-    bashCopy code
     cd go-commerce
     
     ```
@@ -39,7 +37,6 @@ The **`go-commerce`** system is designed to process online orders by applying a 
 3. **Install Dependencies**:
     
     ```go
-    goCopy code
     go mod download
     
     ```
@@ -47,7 +44,6 @@ The **`go-commerce`** system is designed to process online orders by applying a 
 4. **Run Tests**:
     
     ```bash
-    bashCopy code
     go test ./...
     
     ```
@@ -58,7 +54,6 @@ The **`go-commerce`** system is designed to process online orders by applying a 
 To process an order and apply the relevant rules:
 
 ```go
-goCopy code
 import (
     "github.com/rafaelmgr12/go-commerce/internal/domain/entity"
     "github.com/rafaelmgr12/go-commerce/internal/usecase"
@@ -87,8 +82,8 @@ usecase.ProcessOrder(order, r1)
 
 ## **Contributing**
 
-Contributions are welcome! Please read the **[CONTRIBUTING.md](https://chat.openai.com/CONTRIBUTING.md)** for details on how to contribute.
+Contributions are welcome! Please read the **[CONTRIBUTING.md]()** for details on how to contribute.
 
 ## **License**
 
-This project is licensed under the MIT License. See the **[LICENSE.md](https://chat.openai.com/LICENSE.md)** file for details.
+This project is licensed under the MIT License. See the **[LICENSE.md]()** file for details.
