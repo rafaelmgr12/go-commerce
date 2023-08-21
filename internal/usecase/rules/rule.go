@@ -42,7 +42,7 @@ func (r *FragileProductRule) SetNext(rule Rule) {
 
 func (r *FragileProductRule) Apply(o *entity.Order) {
 	if o.Product.Category == "eletrodómestico" {
-		o.Labels = append(o.Labels, "fragile")
+		o.Labels = append(o.Labels, "frágil")
 	}
 	if r.next != nil {
 		r.next.Apply(o)
@@ -55,7 +55,7 @@ func (r *ChildProductRule) SetNext(rule Rule) {
 
 func (r *ChildProductRule) Apply(o *entity.Order) {
 	if o.Product.Category == "infantil" {
-		o.Labels = append(o.Labels, "gift")
+		o.Labels = append(o.Labels, "presente")
 	}
 	if r.next != nil {
 		r.next.Apply(o)

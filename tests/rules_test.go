@@ -31,7 +31,7 @@ func TestFragileProductRule(t *testing.T) {
 	rule := &rules.FragileProductRule{}
 	rule.Apply(order)
 
-	assert.Contains(t, order.Labels, "fragile", "FragileProductRule was not applied correctly")
+	assert.Contains(t, order.Labels, "frágil", "FragileProductRule was not applied correctly")
 }
 
 func TestChildProductRule(t *testing.T) {
@@ -44,7 +44,7 @@ func TestChildProductRule(t *testing.T) {
 	rule := &rules.ChildProductRule{}
 	rule.Apply(order)
 
-	assert.Contains(t, order.Labels, "gift", "ChildProductRule was not applied correctly")
+	assert.Contains(t, order.Labels, "presente", "ChildProductRule was not applied correctly")
 }
 
 func TestBoletoDiscountRule(t *testing.T) {
