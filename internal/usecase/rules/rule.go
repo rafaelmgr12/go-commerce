@@ -29,7 +29,7 @@ func (r *FreeShippingRule) SetNext(rule Rule) {
 
 func (r *FreeShippingRule) Apply(o *entity.Order) {
 	if o.Product.Value > 1000 {
-		o.Labels = append(o.Labels, "free-shipping")
+		o.Labels = append(o.Labels, "frete-grátis")
 	}
 	if r.next != nil {
 		r.next.Apply(o)
@@ -41,7 +41,7 @@ func (r *FragileProductRule) SetNext(rule Rule) {
 }
 
 func (r *FragileProductRule) Apply(o *entity.Order) {
-	if o.Product.Category == "home-appliance" {
+	if o.Product.Category == "eletrodómestico" {
 		o.Labels = append(o.Labels, "fragile")
 	}
 	if r.next != nil {
@@ -54,7 +54,7 @@ func (r *ChildProductRule) SetNext(rule Rule) {
 }
 
 func (r *ChildProductRule) Apply(o *entity.Order) {
-	if o.Product.Category == "child" {
+	if o.Product.Category == "infantil" {
 		o.Labels = append(o.Labels, "gift")
 	}
 	if r.next != nil {

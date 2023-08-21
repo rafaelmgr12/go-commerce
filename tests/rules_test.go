@@ -18,13 +18,13 @@ func TestFreeShippingRule(t *testing.T) {
 	rule := &rules.FreeShippingRule{}
 	rule.Apply(order)
 
-	assert.Contains(t, order.Labels, "free-shipping", "FreeShippingRule was not applied correctly")
+	assert.Contains(t, order.Labels, "frete-grátis", "FreeShippingRule was not applied correctly")
 }
 
 func TestFragileProductRule(t *testing.T) {
 	order := &entity.Order{
 		Product: &entity.Product{
-			Category: "home-appliance",
+			Category: "eletrodómestico",
 		},
 	}
 
@@ -37,7 +37,7 @@ func TestFragileProductRule(t *testing.T) {
 func TestChildProductRule(t *testing.T) {
 	order := &entity.Order{
 		Product: &entity.Product{
-			Category: "child",
+			Category: "infantil",
 		},
 	}
 
@@ -67,7 +67,7 @@ func TestBoletoDiscountRule(t *testing.T) {
 func TestChainOfRules(t *testing.T) {
 	order := &entity.Order{
 		Product: &entity.Product{
-			Category: "home-appliance",
+			Category: "eletrodómestico",
 			Value:    1100,
 		},
 		Payment: &entity.Payment{
