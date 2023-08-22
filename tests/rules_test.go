@@ -15,8 +15,9 @@ func TestFreeShippingRule(t *testing.T) {
 		},
 	}
 
-	rule := &rules.FreeShippingRule{}
-	rule.Apply(order)
+	ruleManager := rules.NewRuleManager()
+	ruleManager.AddRule(&rules.FreeShippingRule{})
+	ruleManager.ApplyRules(order)
 
 	assert.Contains(t, order.Labels, "frete-grátis", "FreeShippingRule was not applied correctly")
 }
@@ -28,8 +29,9 @@ func TestFragileProductRule(t *testing.T) {
 		},
 	}
 
-	rule := &rules.FragileProductRule{}
-	rule.Apply(order)
+	ruleManager := rules.NewRuleManager()
+	ruleManager.AddRule(&rules.FragileProductRule{})
+	ruleManager.ApplyRules(order)
 
 	assert.Contains(t, order.Labels, "frágil", "FragileProductRule was not applied correctly")
 }
@@ -41,8 +43,9 @@ func TestChildProductRule(t *testing.T) {
 		},
 	}
 
-	rule := &rules.ChildProductRule{}
-	rule.Apply(order)
+	ruleManager := rules.NewRuleManager()
+	ruleManager.AddRule(&rules.ChildProductRule{})
+	ruleManager.ApplyRules(order)
 
 	assert.Contains(t, order.Labels, "presente", "ChildProductRule was not applied correctly")
 }
@@ -58,8 +61,9 @@ func TestBoletoDiscountRule(t *testing.T) {
 		},
 	}
 
-	rule := &rules.BoletoDiscountRule{}
-	rule.Apply(order)
+	ruleManager := rules.NewRuleManager()
+	ruleManager.AddRule(&rules.BoletoDiscountRule{})
+	ruleManager.ApplyRules(order)
 
 	assert.Equal(t, 900, order.Payment.Value, "BoletoDiscountRule was not applied correctly")
 }
@@ -76,16 +80,12 @@ func TestChainOfRules(t *testing.T) {
 		},
 	}
 
-	r1 := &rules.FreeShippingRule{}
-	r2 := &rules.FragileProductRule{}
-	r3 := &rules.ChildProductRule{}
-	r4 := &rules.BoletoDiscountRule{}
-
-	r1.SetNext(r2)
-	r2.SetNext(r3)
-	r3.SetNext(r4)
-
-	r1.Apply(order)
+	ruleManager := rules.NewRuleManager()
+	ruleManager.AddRule(&rules.FreeShippingRule{})
+	ruleManager.AddRule(&rules.FragileProductRule{})
+	ruleManager.AddRule(&rules.ChildProductRule{})
+	ruleManager.AddRule(&rules.BoletoDiscountRule{})
+	ruleManager.ApplyRules(order)
 
 	assert.Equal(t, 2, len(order.Labels), "Chain of rules failed")
 	assert.Equal(t, 990, order.Payment.Value, "Chain of rules failed")
