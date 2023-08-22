@@ -5,6 +5,16 @@ import (
 	"github.com/rafaelmgr12/go-commerce/internal/usecase/rules"
 )
 
-func ProcessOrder(order *entity.Order, startingRule rules.Rule) {
-	startingRule.Apply(order)
+var ruleManager *rules.RuleManager
+
+func init() {
+	ruleManager = rules.NewRuleManager()
+	ruleManager.AddRule(&rules.FreeShippingRule{})
+	ruleManager.AddRule(&rules.FragileProductRule{})
+	ruleManager.AddRule(&rules.ChildProductRule{})
+	ruleManager.AddRule(&rules.BoletoDiscountRule{})
+}
+
+func ProcessOrder(order *entity.Order) {
+	ruleManager.ApplyRules(order)
 }
